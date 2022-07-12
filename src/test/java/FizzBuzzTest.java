@@ -40,15 +40,15 @@ class FizzBuzzTest {
     @Test
     void nullString() {
         String test = null;
-        assertThrows(NullPointerException.class, () -> fizzBuzz.fizzBuzzString(test));
+        String result = fizzBuzz.fizzBuzzString(test);
+        assertEquals("null", result);
     }
 
     @Test
     void arrayFizzBuzzTest() {
-        String[] testArray = {"funk", "pub", "fab"};
+        String[] testArray = {"funk", "pub", "fab", null};
         String[] result = fizzBuzz.fizzBuzzArray(testArray);
-//        assertEquals(new String[]{"Fizz", "Buzz", "FizzBuzz"}, result);
-        assertArrayEquals(new String[]{"Fizz", "Buzz", "FizzBuzz"}, result);
+        assertArrayEquals(new String[]{"Fizz", "Buzz", "FizzBuzz", "null"}, result);
     }
 
 }

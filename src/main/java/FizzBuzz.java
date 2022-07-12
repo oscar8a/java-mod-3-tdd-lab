@@ -1,6 +1,7 @@
 public class FizzBuzz {
 
     public String fizzBuzzString(String str) {
+        if (str == null) return "null";
         if (str.startsWith("f") && str.endsWith("b")) return "FizzBuzz";
 
         if (str.startsWith("f"))  return "Fizz";
@@ -17,8 +18,5 @@ public class FizzBuzz {
 
         return inputArray;
     }
-
-
-
 
 }
