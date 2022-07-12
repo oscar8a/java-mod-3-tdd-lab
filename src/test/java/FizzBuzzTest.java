@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FizzBuzzTest {
 
-    FizzBuzz fizzBuzz = new FizzBuzz();
+    FizzBuzz fizzBuzz;
 
     @BeforeEach
     void setUp() {
+        fizzBuzz = new FizzBuzz();
     }
 
     @AfterEach
@@ -39,16 +40,19 @@ class FizzBuzzTest {
 
     @Test
     void nullString() {
-        String test = null;
-        String result = fizzBuzz.fizzBuzzString(test);
-        assertEquals("null", result);
+        assertThrows(IllegalArgumentException.class, () -> fizzBuzz.fizzBuzzString(null));
     }
 
     @Test
     void arrayFizzBuzzTest() {
-        String[] testArray = {"funk", "pub", "fab", null};
-        String[] result = fizzBuzz.fizzBuzzArray(testArray);
-        assertArrayEquals(new String[]{"Fizz", "Buzz", "FizzBuzz", "null"}, result);
+        String[] testArray = {"funk", "pub", "fab"};
+        assertArrayEquals(new String[]{"Fizz", "Buzz", "FizzBuzz"}, fizzBuzz.fizzBuzzArray(testArray));
+
+        String[] testNullValueArray = {"funk", "pub", "fab", null, "wow"};
+        assertThrows(IllegalArgumentException.class, () -> fizzBuzz.fizzBuzzArray(testNullValueArray));
+
+        String[] testNullArray = null;
+        assertThrows(IllegalArgumentException.class, () -> fizzBuzz.fizzBuzzArray(testNullArray));
     }
 
 }
